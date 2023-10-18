@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Example</title>
+    <style>
+        /* Style for big buttons */
+        .big-button {
+            display: block;
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 100px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .big-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose an Option</h1>
+    <form method="POST" action="/all">
+        <button type="submit" name="button_name" class="big-button" value="All">All</button>
+        <button type="submit" name="button_name" value="Relevant">Relevant</button>
+        <button type="submit" name="button_name" value="Spam">Spam</button>
+    </form>
+<!--    <a href="/all" class="big-button">All</a>-->
+<!--    <a href="#" class="big-button">Relevant</a>-->
+<!--    <a href="#" class="big-button">Spam</a>-->
+</body>
+</html>
