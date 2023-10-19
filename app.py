@@ -14,6 +14,9 @@ with open('models.pkl', 'rb') as model_file:
 with open('vectorizer.pkl', 'rb') as vectorizer_file:
     tfidf_vectorizer = pickle.load(vectorizer_file)
 
+with open('modelSA.pkl', 'rb') as model_file:
+    modelSA = pickle.load(model_file)
+
 # Function to extract youtube comments from ID
 
 yt_link = ""
@@ -117,7 +120,7 @@ def all():
         print("Hello")
         # print(classified_comments)
 
-        return render_template('comments-page.html', comments=comments)
+        return render_template('comments-page.html', comments=comments, type="All")
 
     elif(button_kaunsa=='Relevant'):
         print(button_kaunsa)
@@ -153,7 +156,7 @@ def all():
         print("Hello")
         # print(classified_comments)
 
-        return render_template('comments-page.html', comments=ache_comments)
+        return render_template('comments-page.html', comments=ache_comments, type="Relevant")
     elif (button_kaunsa == 'Spam'):
         print(button_kaunsa)
         comments = get_youtube_comments(video_id=yt_link)
@@ -188,7 +191,111 @@ def all():
         print("Hello")
         # print(classified_comments)
 
-        return render_template('comments-page.html', comments=bure_comments)
+        return render_template('comments-page.html', comments=bure_comments, type="Spam")
+    # elif (button_kaunsa == 'Appreciation'):
+    #     print(button_kaunsa)
+    #     comments = get_youtube_comments(video_id=yt_link)
+    #     print("/////////COmments Here")
+    #     print(comments)
+    #     comments = np.array(comments)
+    #     # label_col = np.empty((0,1))
+    #     label_col = []
+    #     cp = []
+    #     for c in comments:
+    #         cp.append([c])
+    #         print("/////////C Here")
+    #         print(c)
+    #         float_features = [c]
+    #         print(float_features)
+    #         features = np.array(float_features)
+    #         prediction_dict = models.polarity_scores(float_features[0]);
+    #         prediction = prediction_dict["compound"]
+    #
+    #         if(prediction > 0.5):
+    #
+    #             # print(prediction)
+    #             label_col.append(prediction)
+    #
+    #     label_array = np.array(label_col)
+    #
+    #     cp = np.array(cp)
+    #     bure_comments = cp[label_array == 1]
+    #
+    #     # classified_comments = np.vstack((comments, label_col))
+    #     # print(comments)
+    #     # print(label_col)
+    #
+    #     print("Hello")
+    #     # print(classified_comments)
+    #
+    #     return render_template('comments-page.html', comments=bure_comments)
+    elif (button_kaunsa == 'Appreciation'):
+        print(button_kaunsa)
+        comments = get_youtube_comments(video_id=yt_link)
+        print("/////////COmments Here")
+        print(comments)
+        comments = np.array(comments)
+        # label_col = np.empty((0,1))
+        label_col = []
+        cp = []
+        for c in comments:
+            cp.append([c])
+            print("/////////C Here")
+            print(c)
+            float_features = [c]
+            print(float_features)
+            prediction_dict = modelSA.polarity_scores(float_features[0]);
+            prediction = prediction_dict["compound"]
+            print(prediction)
+            label_col.append(prediction)
+
+        label_array = np.array(label_col)
+
+        cp = np.array(cp)
+        acche_comments = cp[label_array >= 0.5]
+
+        # classified_comments = np.vstack((comments, label_col))
+        # print(comments)
+        # print(label_col)
+
+        print("Hello")
+        # print(classified_comments)
+
+        return render_template('comments-page.html', comments=acche_comments, type="Appreciation")
+    elif (button_kaunsa == 'Grievances'):
+        print(button_kaunsa)
+        comments = get_youtube_comments(video_id=yt_link)
+        print("/////////COmments Here")
+        print(comments)
+        comments = np.array(comments)
+        # label_col = np.empty((0,1))
+        label_col = []
+        cp = []
+        for c in comments:
+            cp.append([c])
+            print("/////////C Here")
+            print(c)
+            float_features = [c]
+            print(float_features)
+            prediction_dict = modelSA.polarity_scores(float_features[0]);
+            prediction = prediction_dict["compound"]
+            print(prediction)
+            label_col.append(prediction)
+
+        label_array = np.array(label_col)
+
+        cp = np.array(cp)
+        bad_comments = cp[label_array <= -0.5]
+
+        # classified_comments = np.vstack((comments, label_col))
+        # print(comments)
+        # print(label_col)
+
+        print("Hello")
+        # print(classified_comments)
+
+        return render_template('comments-page.html', comments=bad_comments, type="Grievance")
+
 
 if __name__ == '__main__':
     app.run(debug=True)

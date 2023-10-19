@@ -50,15 +50,15 @@
         }
     </style>
 </head>
-<body>
-    <div id="container">
+<body style="background-color: rgba(191, 231, 255, 0.941);">
+    <div id="container" style="background-color: rgb(84, 206, 231); padding: 15px;">
         <br>
         <h1 style="text-align: center">YouTube Comments Classifier</h1>
         <br>
         <table id="comments-table">
             <thead>
                 <tr>
-                    <th>Comment</th>
+                    <th style="background-color: rgb(171, 255, 255);"> {{type }} Comments</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,19 +66,19 @@
                 <tr>
 
                 {% for item in comments %}
-                    <tr><td>{{ item }}</td></tr>
+                    <tr><td style="background-color: rgb(255, 255, 255);">{{ item }}</td></tr>
                 {% endfor %}
 
             </tbody>
         </table>
 
 
-        <button id="filter-button">Filter</button>
-        <select id="category-filter">
-            <option value="category1">Category 1</option>
-            <option value="category2">Category 2</option>
-            <option value="category3">Category 3</option>
-        </select>
+<!--        <button id="filter-button">Filter</button>-->
+<!--        <select id="category-filter">-->
+<!--            <option value="category1">Category 1</option>-->
+<!--            <option value="category2">Category 2</option>-->
+<!--            <option value="category3">Category 3</option>-->
+<!--        </select>-->
     </div>
 
     <script>

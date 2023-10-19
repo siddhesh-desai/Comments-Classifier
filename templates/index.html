@@ -50,15 +50,18 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: rgba(191, 231, 255, 0.941);">
+    <div class="card" style="background-color: rgb(57, 195, 223); margin-top: 5%; height: 20%; width: 80%; margin-left: 10%; margin-top: 15%;">
+
     <div id="container">
         <br>
         <h1 style="text-align: center">YouTube Comments Classifier</h1>
         <br>
         <form id="input-container" method="POST" action="/process_link">
-            <input type="text" id="youtube-link" name="youtube_link" placeholder="Enter YouTube Link">
-            <button id="submit">Fetch Comments</button>
+            <input type="text" id="youtube-link" name="youtube_link" placeholder="Enter YouTube Link" style="margin-bottom: 5%;">
+            <button id="submit" style="margin-bottom: 5%;">Fetch Comments</button>
         </form>
+    </div>
     </div>
 
     <script>

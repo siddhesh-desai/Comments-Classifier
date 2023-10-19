@@ -3,9 +3,14 @@
 <head>
     <title>Button Example</title>
     <style>
+    .container{
+        align-items: center;
+        align-items: center;
+        margin: auto;
+    }
         /* Style for big buttons */
         .big-button {
-            display: block;
+            display: flexbox;
             width: 200px;
             height: 100px;
             margin: 20px;
@@ -24,13 +29,17 @@
         }
     </style>
 </head>
-<body>
-    <h1>Choose an Option</h1>
+<body style="background-color: rgba(191, 231, 255, 0.941);">
+    <h1 style="text-align: center; margin-top: 8%;">Which type of comments you want to see?</h1>
+    <div class="container">
     <form method="POST" action="/all">
-        <button type="submit" name="button_name" class="big-button" value="All">All</button>
-        <button type="submit" name="button_name" value="Relevant">Relevant</button>
-        <button type="submit" name="button_name" value="Spam">Spam</button>
+        <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;" value="All">All</button>
+        <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;" value="Relevant">Relevant</button>
+        <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;"value="Spam">Spam</button>
+        <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;"value="Appreciation">Appreciation</button>
+        <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;"value="Grievances">Grievances</button>
     </form>
+    </div>
 <!--    <a href="/all" class="big-button">All</a>-->
 <!--    <a href="#" class="big-button">Relevant</a>-->
 <!--    <a href="#" class="big-button">Spam</a>-->
